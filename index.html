@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mishal ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: #4a2c2a;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-top: 40px;
+            color: #c0392b;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .section {
+            max-width: 750px;
+            margin: auto;
+            padding: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: .3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .page { display: none; }
+        .active { display: block; }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #c0392b;
+            transform: rotate(45deg);
+            animation: float 6s linear infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #c0392b;
+            border-radius: 50%;
+        }
+
+        .heart:before { top: -10px; left: 0; }
+        .heart:after  { top: 0; left: -10px; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="https://www.dropbox.com/s/hf8tv37obqr0kjm/0111.%20Loveliness%20-%20AShamaluevMusic.mp3?dl=1" type="audio/mpeg">
+</audio>
+
+<div class="page active" id="p1">
+    <h1>Hey Mishal, My Eternal Flame 🔥❤️</h1>
+    <div class="section">
+        <p>
+            Happy Birthday, my Mishal!  
+            Even from miles away, you keep my heart warm like an eternal flame.  
+            Tum woh roshni ho jo kabhi kam nahi hoti.
+        </p>
+
+        <p>
+            Kaash main ye din tumhare saath mana pata…  
+            Lekin doori bhi us ehsaas ko kam nahi karti jo tum mere dil mein jagati ho.
+        </p>
+
+        <button onclick="nextPage(2)">Next ➡️</button>
+    </div>
+</div>
+
+<div class="page" id="p2">
+    <h1>Mishal, My Burning Desire 🌹</h1>
+    <div class="section">
+        <p>
+            Happy Birthday, my love!  
+            Chahe tum jitni bhi door ho, mera dil roz tum tak pohanch jata hai.
+        </p>
+
+        <p>
+            Tumhara chalant hona… aur phir ek dum se pyaar barsa dena —  
+            that's my favourite thing about you.  
+            Tum meri comfort ho… meri peace ho.
+        </p>
+
+        <button onclick="nextPage(3)">Next ❤️</button>
+    </div>
+</div>
+
+<div class="page" id="p3">
+    <h1>Forever Entwined, Mishal 💞</h1>
+    <div class="section">
+        <p>
+            Distance can't shake what’s meant to be.  
+            Tumhare baghair cheezen adhoori lagti hain —  
+            lekin tumhara pyaar mujhe mazboot rakhta hai.
+        </p>
+
+        <p>
+            Mishal… aik baat dil se —  
+            Main chahta hoon ke ye rishta aik din nikkah tak jaye.  
+            Bas saath chalti rehna… childish, mature, kiddo — just the way you are.
+        </p>
+
+        <p><b>Happy Birthday, my baby gurl ❤️</b></p>
+
+        <button onclick="nextPage(1)">Start Again 🔄</button>
+    </div>
+</div>
+
+<div class="hearts"></div>
+
+<script>
+    const audio = document.getElementById('bgMusic');
+    audio.volume = 0.5;
+
+    document.body.addEventListener('click', () => {
+        if (audio.paused) audio.play().catch(() => {});
+    }, { once: true });
+
+    function nextPage(n) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById("p" + n).classList.add('active');
+        if (audio.paused) audio.play().catch(() => {});
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.querySelector('.hearts').appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
